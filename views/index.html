@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>URL Shortener Microservice</title>
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <header>
+      <h1>
+        URL Shortener Microservice
+      </h1>
+      <h2> Free Code Camp Challenge</h2>
+    </header>
+    
+    
+    <div>
+      <h4>User stories:</h4>
+      <li> I can pass a URL as a parameter and I will receive a shortened URL in the JSON response.</li>
+      <li>If I pass an invalid URL that doesn't follow the valid http://www.example.com format, the JSON response will contain an error instead.</li>
+      <li>When I visit that shortened URL, it will redirect me to my original link.</li>
+      <br>
+      =======================================================================
+    </div>
+    
+    <p>
+      Sample Usage:<br><br>
+        https://urlshortener-mzbanez.glitch.me/new/https://www.google.com
+      <br><br>
+      =======================================================================
+      <br><br>
+      Sample Output:<br><br>
+         {"original_url":"https://www.google.com","short_url":"http://urlshortener-mzbanez.glitch.me/07"}
+      <br><br>
+    </p>
+  
+
+  </body>
+</html>
