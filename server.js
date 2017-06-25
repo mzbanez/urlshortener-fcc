@@ -2,11 +2,11 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var mongo = require("mongodb").MongoClient;
-//var shortid = require("shortid");
 var urlRegex = require('url-regex');
 var rg = require('rangen');
 var validUrl = require('valid-url');
-var dburl = 'mongodb://addurl:freecodecamp@ds135382.mlab.com:35382/urlshortener';
+var dburl = process.env.dburl;
+
 
 var myURL, checkURL, shortURL;
 app.use('/',express.static('public'));
@@ -15,7 +15,6 @@ app.get('/new/:url(*)',function(req,res){
 
    myURL = req.params.url;
   
-   //if (urlRegex({exact: true, strict: true}).test(myURL) == true){
    if (validUrl.isUri(myURL)){
      mongo.connect(dburl, function (err, db) {
         if (err) {
@@ -65,7 +64,6 @@ app.get('/:id',function(req,res){
                   res.end('not found')
                   return console.log('read',err);
               } else {
-                    // console.log(docs.length);
                     if(docs.length>0){
                         db.close();
                         res.redirect(docs[0].url);
@@ -82,9 +80,6 @@ app.get('/:id',function(req,res){
 });
 
 
-
-
-
 app.get('/', function(req, res) {
   var fileName = path.join(__dirname, '/views/index.html');
   res.sendFile(fileName, function (err) {
@@ -96,6 +91,7 @@ app.get('/', function(req, res) {
       console.log('Sent:', fileName);
     }
   });
+  
 });
 
 
